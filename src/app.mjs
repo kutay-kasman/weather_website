@@ -5,6 +5,7 @@ import forecast from './utils/forecast.mjs'
 
 //https://api.weatherstack.com/current?access_key=14619be22410b8d751ae5fe8532f44cb&query=istanbul
 const app = express();
+const port = process.env.PORT || 3000 // if the first one fails it will serve in 3000
 
 //setup handlebar engine and views location
 app.set('views', '/Users/Kutay Murat Kasman/Desktop/nodeJs/web-server/public/templates/views')
@@ -80,6 +81,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on 3000');
+app.listen(port, () => {
+    console.log('Server is up on ' + port);
 });

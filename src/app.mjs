@@ -59,16 +59,16 @@ app.get('/weather', (req, res) => {
         if (error) {
             res.send({ error });
         } else {
-            forecast(latitute, longtitude, (error, { weather_description, temperature, precip, humidity, observation_time }) => {
+            forecast(latitute, longtitude, (error, {location_name, location_region, weather_description, temperature, precip, humidity, observation_time }) => {
                 if (error) {
                     res.send({ error });
                 }
-                const hava_durumu = `Today's weather in ${req.query.address} is ${weather_description}, with a temperature of ${temperature} degrees Celsius. 
-                \n${precip}% chance of rain. Humidity is ${humidity}% \n\n Observed at ${observation_time}`;
+                const hava_durumu = `Currently, weather in ${location_name} is ${weather_description}, with a temperature of ${temperature} degrees Celsius. 
+                \nThere has been ${precip}mm of rain. Humidity is ${humidity}% \n\n Observed at ${observation_time} UTC`;
                 res.send({
-                    forecast: hava_durumu,
                     location,
-                    address: req.query.address
+                    address: req.query.address,
+                    forecast: hava_durumu
                 });
             });
         }

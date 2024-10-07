@@ -1,17 +1,21 @@
 import express from 'express';
 import hbs from 'hbs';
 import path from 'path';
-import geocode from './utils/geocode.mjs';
-import forecast from './utils/forecast.mjs';
+import { fileURLToPath } from 'url'; // Import to work with import.meta.url
 
 // Initialize express app
 const app = express();
 const port = process.env.PORT || 3000; // Set the port
 
-// Set up paths for Express
-const viewsPath = ('C:/Users/Kutay Murat Kasman/Desktop/nodeJs/web-server/public/templates/views');
-const partialsPath = ('C:/Users/Kutay Murat Kasman/Desktop/nodeJs/web-server/public/templates/partials');
-const staticPath = ('C:/Users/Kutay Murat Kasman/Desktop/nodeJs/web-server/public');
+// Get the directory name equivalent for ES module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Set up paths for Express using path.join
+// Go up one level from 'src' to 'public/templates'
+const viewsPath = path.join(__dirname, '../public/templates/views');
+const partialsPath = path.join(__dirname, '../public/templates/partials');
+const staticPath = path.join(__dirname, '../public');
 
 // Setup Handlebars engine and views location
 app.set('views', viewsPath);
@@ -79,7 +83,7 @@ app.get('/help/*', (req, res) => {
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
-        name: 'Kutay Kasman',
+        name: 'Kutay Murat Kasman',
         errorMessage: 'Page not found'
     });
 });

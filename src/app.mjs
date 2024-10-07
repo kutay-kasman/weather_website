@@ -1,6 +1,8 @@
 import express from 'express';
 import hbs from 'hbs';
 import path from 'path';
+import geocode from './utils/geocode.mjs';
+import forecast from './utils/forecast.mjs';
 import { fileURLToPath } from 'url'; // Import to work with import.meta.url
 
 // Initialize express app

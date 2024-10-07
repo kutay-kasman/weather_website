@@ -4,7 +4,6 @@ const data1 = document.getElementById('data-1')
 const data2 = document.getElementById('data-2')
 
 
-
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault();
     data1.innerText = 'Loading...'

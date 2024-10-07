@@ -63,7 +63,7 @@ app.get('/weather', (req, res) => {
                 if (error) {
                     res.send({ error });
                 }
-                const hava_durumu = `Today's weather in ${req.query.address} is ${weather_description}, with a temperature of ${temperature} degrees Celsius and a ${precip}% chance of precipitation.`;
+                const hava_durumu = `Today's weather in ${req.query.address} is ${weather_description}, with a temperature of ${temperature} degrees Celsius and a ${precip}% chance of rain.`;
                 res.send({
                     forecast: hava_durumu,
                     location,
